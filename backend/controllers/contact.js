@@ -45,3 +45,28 @@ exports.getContacts = async (req, res) => {
       .json({ status: "N", error: `Internal server error : ${error}` });
   }
 };
+
+exports.deleteContact = async (req, res) => {
+  let id = req.params.id;
+  try {
+    const contact = await Contact.findByIdAndDelete(id);
+    if (!contact) {
+      return res.status(404).json({
+        status: "Y",
+        message: "No Contact found",
+      });
+    }
+
+    return res.status(200).json({
+      status: "Y",
+      message: "contact deleted successfully",
+      data : contact
+    });
+  } catch (error) {
+    console.log("error = ", error);
+    return res.status(500).json({
+      status: "N",
+      error: `internal server error : ${error}`,
+    });
+  }
+};
