@@ -29,3 +29,28 @@ exports.createEvent = async (req, res) => {
     });
   }
 };
+
+exports.getEvent = async (req, res) => {
+  try {
+    const event = await Event.find();
+    if (!event || event.length == 0) {
+      return res.status(400).json({ status: "N", message: "No records found" });
+    }
+    return res.status(200).json({
+      status: "Y",
+      message: "Events fetched successfully",
+      data: event,
+    });
+  } catch (error) {
+    console.log("error = ", error);
+    res.status(500).json({
+      status: "N",
+      message: `Internal server error : ${error}`,
+    });
+  }
+};
+
+// exports.deleteEvent = async (req, res) => {
+//     let id = req.
+    
+// }

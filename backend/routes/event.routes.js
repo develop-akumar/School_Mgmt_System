@@ -1,11 +1,12 @@
 const express = require("express")
 const router = express.Router()
 const {createEvent, 
-    // getEvent, deleteEvent, updateEvent
+    getEvent, 
+    // deleteEvent, updateEvent
 } = require("../controllers/event.controller")
 
 router.post("/", createEvent)
-// router.get("/", getEvent)
+router.get("/", getEvent)
 // router.delete("/:id", deleteEvent)
 // router.put("/:id", updateEvent)
 
