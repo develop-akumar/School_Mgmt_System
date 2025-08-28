@@ -50,7 +50,25 @@ exports.getEvent = async (req, res) => {
   }
 };
 
-// exports.deleteEvent = async (req, res) => {
-//     let id = req.
-    
-// }
+exports.deleteEvent = async (req, res) => {
+  try {
+    let id = req.params.id;
+    console.log('id = ', id);
+    const event = await Event.findByIdAndDelete(id);
+    if (!event) {
+      return res.status(404).json({
+        status: "N",
+        message: `event not found`,
+      });
+    }
+    return res.status(200).json({
+      status: "Y",
+      message: `Event deleted successfully.`,
+    });
+  } catch (error) {
+    console.log("error = ", error);
+    res
+      .status(500)
+      .json({ status: "N", error: `Internal server error : ${error}` });
+  }
+};
