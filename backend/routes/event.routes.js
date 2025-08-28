@@ -4,12 +4,12 @@ const {
   createEvent,
   getEvent,
   deleteEvent,
-//   updateEvent
+  updateEvent
 } = require("../controllers/event.controller");
 
 router.post("/", createEvent);
 router.get("/", getEvent);
 router.delete("/:id", deleteEvent);
-// router.put("/:id", updateEvent)
+router.put("/:id", updateEvent)
 
 module.exports = router;
