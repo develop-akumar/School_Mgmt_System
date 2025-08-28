@@ -1,5 +1,4 @@
-const { default: mongoose } = require("mongoose");
-const Event = require("mongoose");
+  const mongoose = require("mongoose");
 
 const EventSchema = new mongoose.Schema(
   {
