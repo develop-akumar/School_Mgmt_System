@@ -25,6 +25,7 @@ const eventRoutes = require("./routes/event.routes")
 const galleryRoutes = require("./routes/gallery.routes")
 const noticeRoutes = require("./routes/notice.routes")
 const teacherRoutes = require("./routes/teacher.routes")
+const userRoutes = require("./routes/user.routes")
 
 // UsingRoutes
 app.use("/api/contact", contactRoutes)
@@ -32,6 +33,7 @@ app.use("/api/event", eventRoutes)
 app.use("/api/gallery", galleryRoutes)
 app.use("/api/notice", noticeRoutes)
 app.use("/api/teacher", teacherRoutes)
+app.use("/api/user", userRoutes)
 
 app.get('/', (req, res)=>{
 return res.send("hello")
