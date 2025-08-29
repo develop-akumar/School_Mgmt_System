@@ -22,10 +22,14 @@ app.use(express.json())
 // Importing Routes
 const contactRoutes = require("./routes/contact")
 const eventRoutes = require("./routes/event.routes")
+const galleryRoutes = require("./routes/gallery.routes")
+const noticeRoutes = require("./routes/notice.routes")
 
 // UsingRoutes
 app.use("/api/contact", contactRoutes)
 app.use("/api/event", eventRoutes)
+app.use("/api/gallery", galleryRoutes)
+app.use("/api/notice", noticeRoutes)
 
 app.get('/', (req, res)=>{
 return res.send("hello")
