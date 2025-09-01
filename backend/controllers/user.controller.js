@@ -136,7 +136,7 @@ exports.userLogin = async (req, res) => {
   if (!isEmailExists) {
     return res.status(400).json({
       status: "N",
-      message: "Emaillll or password is incorrect",
+      message: "Email or password is incorrect",
     });
   }
 
@@ -144,7 +144,7 @@ exports.userLogin = async (req, res) => {
   if (!isPwdmatched) {
     return res.status(400).json({
       status: "N",
-      message: "Email or passwordddd is incorrect.",
+      message: "Email or password is incorrect.",
     });
   }
 
