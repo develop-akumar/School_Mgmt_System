@@ -1,4 +1,6 @@
 const User = require("../models/User.Model");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 exports.createUser = async (req, res) => {
   try {
@@ -11,12 +13,23 @@ exports.createUser = async (req, res) => {
       });
     }
 
-    const user = new User({ name, email, password });
+    const existingUser = await User.findOne({ email });
+    console.log("existingUser = ", existingUser);
+
+    if (existingUser) {
+      return res.status(400).json({
+        status: "N",
+        message: "Email already exists.",
+      });
+    }
+    const hashedPassword = await bcrypt.hash(password, 10);
+    console.log("hashedPassword = ", hashedPassword);
+    const user = new User({ name, email, password: hashedPassword });
 
     await user.save();
     return res.status(200).json({
       status: "Y",
-      message: "User saved successfully",
+      message: "User registered successfully",
     });
   } catch (error) {
     console.log("error : ", error);
@@ -107,4 +120,56 @@ exports.updateUser = async (req, res) => {
       error: `Internal server error : ${error}`,
     });
   }
+};
+
+exports.userLogin = async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!password || !email) {
+    return res.status(400).json({
+      status: "N",
+      message: "All fields are required",
+    });
+  }
+
+  const isEmailExists = await User.findOne({ email });
+  if (!isEmailExists) {
+    return res.status(400).json({
+      status: "N",
+      message: "Emaillll or password is incorrect",
+    });
+  }
+
+  const isPwdmatched = await bcrypt.compare(password, isEmailExists.password);
+  if (!isPwdmatched) {
+    return res.status(400).json({
+      status: "N",
+      message: "Email or passwordddd is incorrect.",
+    });
+  }
+
+  const token = jwt.sign(
+    {
+      userId: isEmailExists._id,
+      email: isEmailExists.email,
+      name: isEmailExists.name,
+    },
+    process.env.JWT_SECRET,
+    { expiresIn: "1h" }
+  );
+
+  return res.status(200).json({
+    status : "Y",
+    message : "Login successful",
+    token,
+    user : {
+      id : isEmailExists._id,
+      name : isEmailExists.name,
+      email : isEmailExists.email
+
+    }
+  })
+
+ 
+
 };
