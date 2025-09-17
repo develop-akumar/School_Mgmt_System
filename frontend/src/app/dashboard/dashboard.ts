@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ContactDashboard } from './contact-dashboard/contact-dashboard';
+// import { ContactDashboard } from './contact-dashboard/contact-dashboard';
 import { EventsDashboard } from './events-dashboard/events-dashboard';
 import { GalleryDashboard } from './gallery-dashboard/gallery-dashboard';
 import { NoticeDashboard } from './notice-dashboard/notice-dashboard';
@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     TeachersDashboard,
     FormsModule,
-    ContactDashboard,
+    // ContactDashboard,
     TeachersDashboard,
     GalleryDashboard,
     NoticeDashboard,
