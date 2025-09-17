@@ -13,11 +13,13 @@
         onmouseout="this.start();"
       >
         <div class="fs-6">
-          <span
-            ><strong class="text-danger">Function:</strong> Annual Sports Day!
+          @for (events of events; track $index) {
+          <span>
+            <strong class="text-danger">Function:</strong> {{events.title}}, &nbsp;
           </span>
-          <span><strong>Date:</strong> 25th November 2025 </span>
-          <span><strong>Location:</strong> School Playground</span>
+          <span><strong>Date:</strong> {{events.date}}, &nbsp; </span>
+          <span><strong>Location:</strong> {{events.location}} </span>
+          }
         </div></marquee
       >
     </div>
