@@ -16,6 +16,6 @@ export class Api {
   }
 
   getEvents():Observable<any>{
-    return this.http.get(`${this.apiurl}/event`)
+    return this.http.get(`${this.apiurl}/event00`)
   }
 }

@@ -1,9 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Api } from '../../../services/api/api';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-events',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './events.html',
   styleUrl: './events.scss',
 })
