@@ -16,6 +16,10 @@ export class Api {
   }
 
   getEvents():Observable<any>{
-    return this.http.get(`${this.apiurl}/event00`)
+    return this.http.get(`${this.apiurl}/event`)
+  }
+
+  getGallery():Observable<any>{
+    return this.http.get(`${this.apiurl}/gallery`)
   }
 }
