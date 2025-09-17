@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-events',
@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   templateUrl: './events.html',
   styleUrl: './events.scss'
 })
-export class Events {
+export class Events implements OnInit{
+
+  ngOnInit(): void {
+    window.scrollTo(0,0)
+  }
 
 }
