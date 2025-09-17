@@ -1,1 +1,3 @@
-export const environment = {};
+export const environment = {
+    apiurl:"http://localhost:3000/api"
+};
