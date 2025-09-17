@@ -11,6 +11,6 @@ export class Api {
   constructor(private http: HttpClient) {}
 
   getNotices() {
-    return this.http.get(`${this.apiurl}`);
+    return this.http.get(`${this.apiurl}/notice`);
   }
 }
