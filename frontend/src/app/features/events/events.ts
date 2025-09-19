@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Events implements OnInit{
 
+
   ngOnInit(): void {
+    // to scroll page to top when navigating
     window.scrollTo(0,0)
+    
   }
 
 }
